@@ -83,5 +83,4 @@ class DefaultFirebaseOptions {
     authDomain: 'hanbae-83c30.firebaseapp.com',
     storageBucket: 'hanbae-83c30.firebasestorage.app',
   );
-
 }

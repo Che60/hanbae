@@ -13,7 +13,6 @@ class _AddStorePageState extends State<AddStorePage> {
   String? _selectedCategory;
   bool _isLoading = false;
 
-  // 드롭다운 항목
   final List<String> categories = [
     '한식',
     '일식',
@@ -35,7 +34,6 @@ class _AddStorePageState extends State<AddStorePage> {
     });
 
     try {
-      // Firestore에 가게 추가
       await FirebaseFirestore.instance.collection('stores').add({
         'name': _storeController.text,
         'category': _selectedCategory,

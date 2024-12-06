@@ -22,7 +22,6 @@ class _OrderState extends State<Order> {
     _fetchStores();
   }
 
-  // 가게 목록 가져오기
   Future<void> _fetchStores() async {
     var snapshot = await FirebaseFirestore.instance.collection('stores').get();
     setState(() {
@@ -35,7 +34,6 @@ class _OrderState extends State<Order> {
     });
   }
 
-  // 주문 추가
   Future<void> _addOrder() async {
     if (!_formKey.currentState!.validate() || _selectedStore == null) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -49,16 +47,14 @@ class _OrderState extends State<Order> {
     });
 
     try {
-      // 선택한 가게의 category 값을 찾기
       var selectedStore = _stores.firstWhere(
           (store) => store['name'] == _selectedStore,
           orElse: () => {'category': 'Unknown'});
 
-      // Firestore에 주문 저장
       await FirebaseFirestore.instance.collection('posts').add({
         'food': _foodController.text,
         'store': _selectedStore,
-        'category': selectedStore['category'], // category 추가
+        'category': selectedStore['category'],
         'timestamp': DateTime.now().toIso8601String(),
       });
 
@@ -87,21 +83,19 @@ class _OrderState extends State<Order> {
       key: _formKey,
       child: Column(
         children: [
-          // 음식 이름 입력
           TextFormField(
             controller: _foodController,
             decoration: const InputDecoration(
-              hintText: '같이 시킬 음식을 작성해주세요',
+              hintText: '같이 주문할 음식을 작성해주세요',
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return '음식을 작성해주세요';
+                return '앗! 주문할 음식을 작성해주세요!';
               }
               return null;
             },
           ),
           const SizedBox(height: 8),
-          // 가게 선택 드롭다운
           DropdownButtonFormField<String>(
             value: _selectedStore,
             onChanged: (newValue) {
@@ -119,14 +113,13 @@ class _OrderState extends State<Order> {
               );
             }).toList(),
           ),
-          // 가게가 없으면 추가 페이지로 이동하는 버튼
           TextButton(
             onPressed: () async {
               await Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => AddStorePage()),
               );
-              _fetchStores(); // 새 가게 추가 후 데이터 갱신
+              _fetchStores();
             },
             child: Text('찾으시는 가게가 없나요?'),
           ),
@@ -139,7 +132,7 @@ class _OrderState extends State<Order> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFC7EDFE),
                   ),
-                  child: const Text('저장하기'),
+                  child: const Text('작성 완료'),
                 ),
         ],
       ),

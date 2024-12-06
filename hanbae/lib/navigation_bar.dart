@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'search.dart';
 import 'home.dart';
 import 'user.dart';
+import 'shop_list.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   final BuildContext context;
@@ -18,20 +18,19 @@ class CustomNavigationBar extends StatelessWidget {
             children: [
               _buildBottomNavItem(
                 context,
-                Icons.search, // 검색 아이콘
-                '검색', // 텍스트
+                Icons.store,
+                '가게',
                 () {
                   Navigator.push(
-                    // push로 변경
                     context,
-                    MaterialPageRoute(builder: (context) => SearchPage()),
+                    MaterialPageRoute(builder: (context) => ShopListPage()),
                   );
                 },
               ),
               _buildBottomNavItem(
                 context,
-                Icons.directions_car, // '같이 배달' 아이콘
-                '같이 배달', // 텍스트
+                Icons.directions_car,
+                '같이 배달',
                 () {
                   Navigator.pushReplacement(
                     context,
@@ -41,7 +40,7 @@ class CustomNavigationBar extends StatelessWidget {
               ),
               _buildBottomNavItem(
                 context,
-                Icons.person, // 사용자 아이콘
+                Icons.person,
                 '사용자',
                 () {
                   Navigator.pushReplacement(

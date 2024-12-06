@@ -3,8 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'login.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // Flutter 엔진 초기화
-  await Firebase.initializeApp(); // Firebase 초기화
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -39,7 +39,12 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Image.asset('assets/titleImage.png'), // titleImage.png 위치 확인
+        child: Image.asset(
+          'assets/titleImage.png',
+          width: double.infinity,
+          height: double.infinity,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
