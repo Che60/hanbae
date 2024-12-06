@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "225405021397",
+    "project_id": "hanbae-83c30",
+    "storage_bucket": "hanbae-83c30.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225405021397:android:bc9faa0914d66361f5865c",
+        "android_client_info": {
+          "package_name": "com.example.hanbae"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9evIxXyBSqz07tFb5W9Gq1gN31z2fA1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225405021397:android:978a1c29278c9677f5865c",
+        "android_client_info": {
+          "package_name": "com.hanbae.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9evIxXyBSqz07tFb5W9Gq1gN31z2fA1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
