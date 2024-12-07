@@ -111,8 +111,16 @@ class _HomePageState extends State<HomePage> {
             ),
             Spacer(),
             ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('로그아웃'),
+              leading: Icon(
+                Icons.logout,
+                color: Colors.red,
+              ),
+              title: Text(
+                '로그아웃',
+                style: TextStyle(
+                  color: Colors.red,
+                ),
+              ),
               onTap: () async {
                 await FirebaseAuth.instance.signOut();
                 Navigator.pushReplacement(

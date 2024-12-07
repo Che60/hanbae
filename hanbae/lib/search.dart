@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
+import 'detail.dart'; // 추가된 임포트
 
 class SearchPage extends StatefulWidget {
   @override
@@ -150,10 +151,20 @@ class _SearchPageState extends State<SearchPage> {
                             break;
                         }
 
-                        return PostCard(
-                          food: post['food'] ?? '제목 없음',
-                          timestamp: formattedDate,
-                          imageUrl: imagePath,
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DetailPage(post: post),
+                              ),
+                            );
+                          },
+                          child: PostCard(
+                            food: post['food'] ?? '제목 없음',
+                            timestamp: formattedDate,
+                            imageUrl: imagePath,
+                          ),
                         );
                       },
                     );
